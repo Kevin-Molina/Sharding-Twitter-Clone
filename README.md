@@ -22,7 +22,10 @@ What is MiniTwit?
 
          flask initdb
 
-      5. now you can run minitwit:
+	  5. Initialize the db with dummy data (optional)
+		 flask populatedb
+
+      6. now you can run minitwit:
 
          flask run
 

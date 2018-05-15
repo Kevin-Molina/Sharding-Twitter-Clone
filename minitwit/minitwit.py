@@ -98,12 +98,30 @@ def init_db():
             db.cursor().executescript(f.read())
             db.commit()
 
+def populate_db():
+    """Populates the database. Kind of hacky."""
+    dbs = get_all_dbs()
+    with app.open_resource('minitwit0data', mode='r') as f:
+        dbs[0].cursor().executescript(f.read())
+        dbs[0].commit()
+    with app.open_resource('minitwit1data', mode='r') as f:
+        dbs[1].cursor().executescript(f.read())
+        dbs[1].commit()
+    with app.open_resource('minitwit2data', mode='r') as f:
+        dbs[2].cursor().executescript(f.read())
+        dbs[2].commit()
 
 @app.cli.command('initdb')
 def initdb_command():
     """Creates the database tables."""
     init_db()
     print('Initialized the database.')
+
+@app.cli.command('populatedb')
+def populatedb_command():
+    """Populated each db."""
+    populate_db()
+    print('Populated the database.')
 
 def query_db_shard(query, shard, args=(), one=False):
     cur = get_db(shard).execute(query, args)
