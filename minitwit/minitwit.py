@@ -270,7 +270,7 @@ def add_message():
         shard = calculate_shard(session['user_id'])
         db = get_db(shard)
         db.execute('''insert into message (message_id, author_id, text, pub_date)
-          values (?, ?, ?)''', (uuid.uuid4(), session['user_id'], request.form['text'],
+          values (?, ?, ?, ?)''', (uuid.uuid4(), session['user_id'], request.form['text'],
                                 int(time.time())))
         db.commit()
         flash('Your message was recorded')
