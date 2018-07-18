@@ -1,8 +1,8 @@
 
 
-What is MiniTwit?
+What is MiniTwit (Sharded)?
 
-      A SQLite and Flask powered twitter clone
+      A SQLite and Flask powered twitter clone with work done to shard the backend across multiple SQLite databases
 
     ~ How do I use it?
 
