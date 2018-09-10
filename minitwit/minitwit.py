@@ -1,12 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-    MiniTwit
-    ~~~~~~~~
-    A microblogging application written with Flask and sqlite3.
-    :copyright: (c) 2015 by Armin Ronacher.
-    :license: BSD, see LICENSE for more details.
-"""
-
 import time
 from sqlite3 import dbapi2 as sqlite3
 import uuid
@@ -20,15 +11,12 @@ sqlite3.register_converter('GUID', lambda b: uuid.UUID(bytes_le=b))
 sqlite3.register_adapter(uuid.UUID, lambda u: buffer(u.bytes_le))
 
 # configuration
-DATABASE = '/tmp/minitwit.db'
 DATABASE0 = '/tmp/minitwit0.db'
 DATABASE1 = '/tmp/minitwit1.db'
 DATABASE2 = '/tmp/minitwit2.db'
 PER_PAGE = 30
 DEBUG = True
-SECRET_KEY = 'development key'
 
-# create our little application :)
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config.from_envvar('MINITWIT_SETTINGS', silent=True)
